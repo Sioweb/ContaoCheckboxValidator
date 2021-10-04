@@ -6,24 +6,22 @@ if(window['jQuery'] !== undefined) {
 		var pluginName = 'checkboxValidatorConfirm',
 			PluginClass;
 
-
 		/* Enter PluginOptions */
 		$[pluginName+'Default'] = {
 			form: 'form',
 			submitButtton: 'form [type="sumbit"]',
 			container: 'closest:.widget',
-			title: 'Kurz zum Datenschutz',
-			content: 'Mit dem Absenden des Formulares stimmst Du zu, dass Deine Angaben aus dem Kontaktformular zur Beantwortung Deiner Anfrage von Sioweb erhoben und verarbeitet werden. Die Daten werden nach abgeschlossener Bearbeitung Deiner Anfrage gelöscht.',
+			title: 'TITLE',
+			content: 'Lorem Ipsum Dolor Sit Amet!',
 			button_accept: 'Absenden',
 			button_abort: 'Abbrechen',
-			invalid: function(element,selfObj,confirmObj) {},
-			open: function(element,selfObj,confirmObj) {},
-			added: function(selfObj,confirmObj) {},
-			accept: function(selfObj,confirmObj) {},
-			abort: function(selfObj,confirmObj) {},
+			invalid: function(element, selfObj, confirmObj) {},
+			open: function(element, selfObj, confirmObj) {},
+			added: function(selfObj, confirmObj) {},
+			accept: function(selfObj, confirmObj) {},
+			abort: function(selfObj, confirmObj) {},
 		};
 		
-
 		PluginClass = function() {
 
 			var selfObj = this;
