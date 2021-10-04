@@ -1,0 +1,56 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_form_field.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="FFL.checkboxValidator.0">
+        <source>Checkbox-Validation Field</source>
+        <target>Checkbox-Validation Feld</target>
+      </trans-unit>
+      <trans-unit id="FFL.checkboxValidator.1">
+        <source>...</source>
+        <target>...</target>
+      </trans-unit>
+
+      <trans-unit id="tl_form_field.checkboxValidator_legend">
+        <source>Checkbox-Validation-Overlay</source>
+        <target>Checkbox-Validation-Overlay</target>
+      </trans-unit>
+
+      <trans-unit id="tl_form_field.checkboxValidator_title.0">
+        <source>Modal Title</source>
+        <target>Modal Titel</target>
+      </trans-unit>
+      <trans-unit id="tl_form_field.checkboxValidator_title.1">
+        <source>Dieser Eintrag wird im Modal als Überschrift dargestellt.</source>
+        <target>Dieser Eintrag wird im Modal als Überschrift dargestellt.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_form_field.checkboxValidator_content.0">
+        <source>Modal Content</source>
+        <target>Modal Inhalt</target>
+      </trans-unit>
+      <trans-unit id="tl_form_field.checkboxValidator_content.1">
+        <source>Dieser Eintrag wird im Modal als Inhalt dargestellt. Hier kann auch ein ganzer Artikel oder ein Inhaltselement, mittels Inserttag eingetragen werden.</source>
+        <target>Dieser Eintrag wird im Modal als Inhalt dargestellt. Hier kann auch ein ganzer Artikel oder ein Inhaltselement, mittels Inserttag eingetragen werden.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_form_field.checkboxValidator_accept_button.0">
+        <source>Senden Button</source>
+        <target>Senden Button</target>
+      </trans-unit>
+      <trans-unit id="tl_form_field.checkboxValidator_accept_button.1">
+        <source>Dieser Text wird für den Senden-Button im Modal verwendet.</source>
+        <target>Dieser Text wird für den Senden-Button im Modal verwendet.</target>
+      </trans-unit>
+
+      <trans-unit id="tl_form_field.checkboxValidator_abort_button.0">
+        <source>Abbrechen Button</source>
+        <target>Abbrechen Button</target>
+      </trans-unit>
+      <trans-unit id="tl_form_field.checkboxValidator_abort_button.1">
+        <source>Dieser Text wird für den Abbrechen-Button im Modal verwendet.</source>
+        <target>Dieser Text wird für den Abbrechen-Button im Modal verwendet.</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

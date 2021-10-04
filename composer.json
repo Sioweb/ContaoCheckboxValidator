@@ -1,0 +1,30 @@
+{
+    "name": "sioweb/checkbox-validator",
+    "type": "contao-bundle",
+    "description": "Sioweb checkbox validation Contao +4",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Sascha Weidner",
+            "homepage": "https://www.sioweb.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "contao/core-bundle": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sioweb\\CheckboxValidator\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Sioweb\\CheckboxValidator\\ContaoManager\\Plugin"
+    },
+    "scripts": {
+        "package-scripts": [
+            "@config.localhost==1",
+            "Sioweb\\ApplyEnvironment\\Composer\\Git::init --repository=git@github.com:Sioweb/ContaoCheckboxValidator.git"
+        ]
+    }
+}
