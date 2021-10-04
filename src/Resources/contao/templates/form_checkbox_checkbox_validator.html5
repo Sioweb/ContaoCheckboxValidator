@@ -37,6 +37,7 @@
     
     <?php /**/?>
     <script>
+      console.log('AAAAAAAAA');
       var executeCheckboxValidator = (function($) {$(function() {
           var $widget = $('#ctrl_<?= $this->id ?>'),
               $submit = $widget.closest('form').find('[type="submit"]');

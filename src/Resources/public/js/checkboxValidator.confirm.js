@@ -1,4 +1,5 @@
 if(window['jQuery'] !== undefined) {
+	console.log('ASDASD');
 	(function($){
 
 		"use strict";
@@ -50,6 +51,7 @@ if(window['jQuery'] !== undefined) {
 			};
 
 			this.loaded = function() {
+				console.log('LOADED');
 				selfObj.submitButtton.confirm({
 					container: selfObj.container,
 					title: selfObj.title,
