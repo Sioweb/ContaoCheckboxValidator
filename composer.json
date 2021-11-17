@@ -20,11 +20,5 @@
     },
     "extra": {
         "contao-manager-plugin": "Sioweb\\CheckboxValidator\\ContaoManager\\Plugin"
-    },
-    "scripts": {
-        "package-scripts": [
-            "@config.localhost==1",
-            "Sioweb\\ApplyEnvironment\\Composer\\Git::init --repository=git@github.com:Sioweb/ContaoCheckboxValidator.git"
-        ]
     }
 }
