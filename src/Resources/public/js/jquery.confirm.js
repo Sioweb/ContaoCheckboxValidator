@@ -85,7 +85,7 @@ if(window['jQuery'] !== undefined) {
 				this.item = $(this.elem);
 				this.isHTML = selfObj.item[0].tagName.toLowerCase() === 'html';
 
-				if(this.container.indexOf('closest:') !== -1) {
+				if(typeof this.container.indexOf === 'function' && this.container.indexOf('closest:') !== -1) {
 					this.container = this.item.closest(this.container.replace('closest:',''));
 				} else {
 					this.container = $(this.container);
@@ -180,6 +180,7 @@ if(window['jQuery'] !== undefined) {
 					selfObj.button_pressed($(this),selfObj);
 					selfObj.inner_abort();
 				});
+
 
 				if(selfObj.stopPropagations) {
 					selfObj.modal.children().bind('mousemove mousedown mouseup keydown keyup',function(e) {

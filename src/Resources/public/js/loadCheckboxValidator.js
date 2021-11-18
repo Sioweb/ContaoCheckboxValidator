@@ -3,4 +3,3 @@ if(window.loadCheckboxValidator !== undefined && window.loadCheckboxValidator.le
         window.loadCheckboxValidator[key](jQuery);
     }
 }
-console.log('ASDASDASD');

@@ -12,10 +12,8 @@
  */
 
 $GLOBALS['TL_FFL']['checkboxValidator'] = 'Sioweb\CheckboxValidator\Forms\FormCheckboxValidator';
-
-$GLOBALS['TL_CSS'][] = 'bundles/siowebcheckboxValidator/css/jquery.confirm.css|static';
-$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/siowebcheckboxValidator/js/jquery.confirm.js|static';
-$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/siowebcheckboxValidator/js/checkboxValidator.confirm.js|static';
-$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/siowebcheckboxValidator/js/loadCheckboxValidator.js|static';
-
+$GLOBALS['TL_CSS'][] = 'bundles/siowebcheckboxvalidator/css/jquery.confirm.css|static';
+$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/siowebcheckboxvalidator/js/jquery.confirm.js|static';
+$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/siowebcheckboxvalidator/js/checkboxValidator.confirm.js|static';
+$GLOBALS['TL_JAVASCRIPT'][] = 'bundles/siowebcheckboxvalidator/js/loadCheckboxValidator.js|static';
 $GLOBALS['EFG']['storable_fields'][] = 'checkboxValidator';

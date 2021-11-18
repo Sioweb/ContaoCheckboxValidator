@@ -20,24 +20,30 @@
     <input type="hidden" name="<?= $this->name ?>" value="">
 
     <?php foreach ($this->getOptions() as $option): ?>
-      <?php if ($option['type'] == 'group_start'): ?>
-        <fieldset>
-        <legend><?= $option['label'] ?></legend>
-      <?php endif; ?>
 
       <?php if ($option['type'] == 'option'): ?>
-        <span><input type="checkbox" required name="<?= $option['name'] ?>" id="opt_<?= $option['id'] ?>" class="checkbox" value="<?= $option['value'] ?>"<?= $option['checked'] ?><?= $option['attributes'] ?>> <label id="lbl_<?= $option['id'] ?>" for="opt_<?= $option['id'] ?>"><?= $option['label'] ?></label></span>
+        <span>
+          <input 
+            type="checkbox"
+            required
+            name="<?= $option['name'] ?>"
+            id="opt_<?= $option['id'] ?>"
+            class="checkbox"
+            data-checkboxValidatorConfirm='<?php echo json_encode([
+              'modalID' => 'modal_ctrl_' . $this->id,
+              'title' => $this->getModalTitle(),
+              'content' => $this->getModalContent(),
+              'button_accept' => $this->getModalAccept(),
+              'button_abort' => $this->getModalAbort(),
+            ]);?>'
+            value="<?= $option['value'] ?>"<?= $option['checked'] ?><?= $option['attributes'] ?>
+          > <label id="lbl_<?= $option['id'] ?>" for="opt_<?= $option['id'] ?>"><?= $option['label'] ?></label></span>
       <?php endif; ?>
 
-      <?php if ($option['type'] == 'group_end'): ?>
-        </fieldset>
-      <?php endif; ?>
     <?php endforeach; ?>
 
-    
-    <?php /**/?>
+    <?php /** /?>
     <script>
-      console.log('AAAAAAAAA');
       var executeCheckboxValidator = (function($) {$(function() {
           var $widget = $('#ctrl_<?= $this->id ?>'),
               $submit = $widget.closest('form').find('[type="submit"]');
@@ -51,10 +57,11 @@
             return;
           }
 
-          $widget.hide();
+          // $widget.hide();
           $widget.checkboxValidatorConfirm({
             form: $widget.closest('form'),
             submitButtton: $submit,
+            formElement: $widget.find('[required]'),
             container: 'closest:.widget',
             title: '<?= $this->getModalTitle()?>',
             content: '<?= $this->getModalContent()?>',
@@ -63,9 +70,12 @@
           })
         });});
       if(window.loadCheckboxValidator === undefined && window['jQuery'] !== undefined) {
-        document.getElementById('opt_<?= $option['id'] ?>').required = false;
+        // document.getElementById('opt_<?= $option['id'] ?>').required = false;
+        window.loadCheckboxValidator = [];
+        console.log('AAA')
         executeCheckboxValidator(jQuery);
       } else {
+        console.log('ASDASDASD', window.loadCheckboxValidator);
         if(window.loadCheckboxValidator === undefined) {
           window.loadCheckboxValidator = [];
         }

@@ -16,15 +16,15 @@ class FormCheckboxValidator extends \FormCheckBox
 	protected $strPrefix = 'widget widget-checkbox widget-accept-checkbox_validator';
 
 	protected function getModalTitle() {
-		return $this->checkbox_validator_title;
+		return $this->checkboxValidator_title;
 	}
 	protected function getModalContent() {
-		return $this->checkbox_validator_content;
+		return $this->checkboxValidator_content;
 	}
 	protected function getModalAccept() {
-		return $this->checkbox_validator_accept_button;
+		return $this->checkboxValidator_accept_button;
 	}
 	protected function getModalAbort() {
-		return $this->checkbox_validator_abort_button;
+		return $this->checkboxValidator_abort_button;
 	}
 }

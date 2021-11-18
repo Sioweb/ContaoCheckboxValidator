@@ -1,5 +1,5 @@
 if(window['jQuery'] !== undefined) {
-	console.log('ASDASD');
+
 	(function($){
 
 		"use strict";
@@ -10,8 +10,8 @@ if(window['jQuery'] !== undefined) {
 		/* Enter PluginOptions */
 		$[pluginName+'Default'] = {
 			form: 'form',
-			submitButtton: 'form [type="sumbit"]',
-			container: 'closest:.widget',
+			modalID: null,
+			container: '.widget',
 			title: 'TITLE',
 			content: 'Lorem Ipsum Dolor Sit Amet!',
 			button_accept: 'Absenden',
@@ -22,13 +22,13 @@ if(window['jQuery'] !== undefined) {
 			accept: function(selfObj, confirmObj) {},
 			abort: function(selfObj, confirmObj) {},
 		};
-		
+
 		PluginClass = function() {
 
 			var selfObj = this;
 			this.item = false;
 			this.initOptions = new Object($[pluginName+'Default']);
-			
+
 			this.init = function(elem) {
 				selfObj = this;
 
@@ -40,62 +40,48 @@ if(window['jQuery'] !== undefined) {
 
 				this.loaded();
 			};
-			
+
 			this.modalPosition = function(confirmObj) {
 				return {
-					maxWidth: confirmObj.item.width(),
-					maxHeight: confirmObj.item.height(),
-					bottom: ($(window).height() - (confirmObj.item.offset().top - $(window).scrollTop() + 50)),
-					left: confirmObj.item.offset().left - 20
+					maxWidth: selfObj.item.closest('.widget'),
+					maxHeight: 200,
+					bottom: ($(window).height() - (selfObj.item.offset().top - $(window).scrollTop() + 50)),
+					left: selfObj.item.offset().left - 20
 				};
 			};
-
+		
 			this.loaded = function() {
-				console.log('LOADED');
-				selfObj.submitButtton.confirm({
-					container: selfObj.container,
-					title: selfObj.title,
-					content: selfObj.content,
-					button_accept: selfObj.button_accept,
-					button_abort: selfObj.button_abort,
-					abort: function(confirmObj) {
-						selfObj.abort(selfObj,confirmObj);
-					},
-					accept: function(confirmObj) {
-						var $form = confirmObj.item.closest('form');
-						$form.find('[type="checkbox"][name="checkboxValidator"]').attr('checked', true);
-						selfObj.accept(selfObj,confirmObj);
-						$form[0].submit();
-					},
-					added: function(confirmObj) {
-						selfObj.added(selfObj,confirmObj);
-						confirmObj.modal.css(selfObj.modalPosition(confirmObj));
-					},
-					open: function(confirmObj) {
-						var $required = confirmObj.item.closest('form').find('[required]'),
-							valid = true;
-						
-						$required.each(function() {
-							if($(this).val() === '') {
-								valid = false;
-								selfObj.invalid(this,selfObj,confirmObj);
-							}
-						});
-
-						if(!valid) {
-							return false;
-						}
-						
-						selfObj.open(this,selfObj,confirmObj);
-						confirmObj.modal.css($.extend(true, selfObj.modalPosition(confirmObj), {
-							maxWidth: '',
-							maxHeight: ''
-						}));
-
-						return true;
-					}
-				});
+				selfObj = Object.assign(selfObj, selfObj.item.data('checkboxvalidatorconfirm'));
 			};
+
+			this.checkbox = function() {
+				if(!selfObj.item.is(':checked')) {
+					$.confirm({
+						container: selfObj.item.closest('.widget'),
+						modalID: selfObj.modalID,
+						title: selfObj.title,
+						content: selfObj.content,
+						button_accept: selfObj.button_accept,
+						button_abort: selfObj.button_abort,
+						abort: function(confirmObj) {
+							selfObj.abort(selfObj, confirmObj);
+						},
+						accept: function(confirmObj) {
+							var $form = selfObj.item.closest('form');
+							selfObj.item.attr('checked', true);
+							selfObj.accept(selfObj, confirmObj);
+						},
+						added: function(confirmObj) {
+							selfObj.added(selfObj, confirmObj);
+							confirmObj.modal.css(selfObj.modalPosition(confirmObj));
+						}
+					});
+					return false;
+				}
+
+				return true;
+			};
+			
 		};
 
 		$[pluginName] = $.fn[pluginName] = function(settings) {
@@ -152,4 +138,31 @@ if(window['jQuery'] !== undefined) {
 			return returnElement[0];
 		};
 	})(jQuery);
+
+	(function($) {$(function() {
+		var checkboxValidatorElements = $('[type="checkbox"][name*="checkboxValidator"]'),
+				checkboxValidatorForm = checkboxValidatorElements.closest('form'),
+				$submit = checkboxValidatorForm.find('[type="submit"]');
+		//
+
+		if(!$submit.length) {
+			$submit = checkboxValidatorForm.find('button.submit');
+		};
+
+		checkboxValidatorElements.each(function() {
+			$(this).checkboxValidatorConfirm({
+				form: checkboxValidatorForm
+			})[0];
+		});
+
+		$submit.click(function(e) {
+			e.stopPropagation();
+			checkboxValidatorElements.each(function() {
+				if(!$(this)[0].checkboxValidatorConfirm.checkbox()) {
+					e.preventDefault();
+					return false;
+				}
+			});
+		});
+	});})(jQuery);
 }
